@@ -1,0 +1,52 @@
+Spicy 2: longest_bit_run """
+def longest_bit_run(s):
+    result0 = 0
+    result1 = 0
+    result = 0
+    longestCountOfZeroes = 0
+    longestCountOfOnes=0
+  
+    if (s=='0'):
+        longestCountOfZeroes = 1
+    else :   
+      for i in s:
+        if (i == '0'):
+            result0 += 1 
+        elif (i=='1'):
+            result1 += 1          
+
+    if (result0 > longestCountOfZeroes):        
+        longestCountOfZeroes= result0
+        result0 =0
+    if(result1 > longestCountOfOnes):
+        longestCountOfOnes=result1
+        result1=0
+
+    if(longestCountOfZeroes>longestCountOfOnes):
+        result =longestCountOfZeroes
+    elif(longestCountOfOnes>longestCountOfZeroes):
+        result =longestCountOfOnes
+    elif(longestCountOfZeroes == longestCountOfOnes ):
+        result = longestCountOfZeroes
+      
+    return result
+
+""" Spicy Test 2 """
+def test_longest_bit_run():
+    print("Testing longest_bit_run...", end='')
+    assert(longest_bit_run('0') == 1)
+    assert(longest_bit_run('011') == 2)
+    assert(longest_bit_run('0000') == 4)
+    assert(longest_bit_run('01') == 1)
+    assert(longest_bit_run('00111100') == 4)
+    print("... done!")
+
+
+
+
+def test_all():
+    test_collatz()
+    test_longest_bit_run()
+
+if __name__ == '__main__':
+    test_all()
